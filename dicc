@@ -1,0 +1,58 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+/*class Nodo {
+   public:
+    void Guardar(string operando1, string operador2);
+    Nodo *enlace;
+   private:
+    string operando;
+    string operador;
+
+ };
+
+ void Nodo::Guardar(string operando1, string operador2){
+      operando=operando1;
+      operador=operador2;
+ }
+*/
+ /*int main(){
+     string line="line";
+     line= line[3] +line;
+cout<< line<< endl;
+if(!(line[4]>=65&& line[4]<=90)){
+    cout<<"ok";
+}
+ return 0;
+ }*/
+
+int main () {
+  string line;
+  string arm [6][2]={{""}};
+  int i=0,j=0;
+  ifstream myfile ("inst.txt");
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )//how to be try hard in tokens :v (spanglish alv)
+    {
+        while(line[i] != ','){
+            arm[j][0]=arm[j][0]+line[i];
+            i++;
+        }
+        i++;
+        while (line[i] != '/'){
+            arm[j][1]=arm[j][1]+line[i];
+            i++;
+        }
+        j++;
+        i=0;
+    }
+    myfile.close();
+  }else{
+      cout<<"file not found";
+  }
+  myfile.close();
+  return 0;
+}
