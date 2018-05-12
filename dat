@@ -1,0 +1,33 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main () {
+  string line;
+  string arm [6][2]={{""}};
+  int i=0,j=0;
+  ifstream myfile ("inst.txt");
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )//how to be try hard in tokens :v (spanglish alv)
+    {
+        while(line[i] != ','){
+            arm[j][0]=arm[j][0]+line[i];
+            i++;
+        }
+        i++;
+        while (line[i] != '/'){
+            arm[j][1]=arm[j][1]+line[i];
+            i++;
+        }
+        j++;
+        i=0;
+    }
+    myfile.close();
+  }else{
+      cout<<"file not found";
+  }
+  myfile.close();
+  return 0;
+}
